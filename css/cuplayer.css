@@ -1,0 +1,41 @@
+@charset 'utf-8';
+body {overflow-x:hidden;  font-family: '微软雅黑';}
+.icon-pause,
+.icon-play { display: inline-block; width: 32px; height: 32px; background: url(../images/icon-music.png); background-size: 32px 32px; }
+.rotate {
+    -webkit-animation: rotating 1.2s linear infinite;
+    -moz-animation: rotating 1.2s linear infinite;
+    -o-animation: rotating 1.2s linear infinite;
+    animation: rotating 1.2s linear infinite;
+}
+
+ 
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@-moz-keyframes rotating {
+    from {
+        -moz-transform: rotate(0deg)
+    }
+
+    to {
+        -moz-transform: rotate(360deg)
+    }
+}

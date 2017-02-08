@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 小王子，生日快乐哦！</title>
+    <link rel="icon" href="./images/favicon.ico">
+    <link href="./css/style.css" type="text/css" rel="stylesheet">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/garden.js"></script>
+    <script src="./js/functions.js"></script>
+</head>
+
+<body>
+<div id="mainDiv">
+    <div id="content">
+        <div id="code">
+            <span class="comments">亲爱的：</span><br/>
+            <span class="comments">在你生日到来之际，我将快乐的音符，作为礼物送给你</span><br/>
+            <span class="comments">愿您拥有365个美丽的日子，衷心地祝福你，生日快乐！</span><br/><br/>
+            <span class="comments">在此诚挚地献上我的三个祝愿：</span><br/>
+            <span class="comments">一愿你身体健康；二愿你幸福快乐；三愿你万事如意！</span><br/><br/>
+            <span class="comments">送你一个生日蛋糕，祝你生日快乐！</span><br/>
+            <span class="comments">第一层，体贴！第二层，关怀！</span><br/>
+            <span class="comments">第三层，浪漫！第四层，温馨！</span><br/>
+            <span class="comments">中间夹层，甜蜜！祝你天天都有一份好心情！</span><br/>
+            <br><br>
+            <span class="comments"><b class="bb">老头儿 ❤ 傻妞儿</b></span>
+        </div>
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages">
+                    <img src="./images/zsr.png">
+                </div>
+                <div id="loveu">
+                    <img src="./images/sr.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="copyright">
+        <center>
+            <link rel="stylesheet" href="./css/cuplayer.css">
+            <div style="position:absolute; top:50px; right:50px;">
+                <audio id="main_audio" autoplay="autoplay" preload="auto" loop>
+                    <source src="./mp3/birthday.mp3" type="audio/mpeg"/>
+                    <embed id="main_audio_ie8" hidden="true" autostart="true" height="0" width=0 loop="true"
+                           src="./mp3/birthday.mp3" autoplay="autoplay"/>
+                </audio>
+                <a class="c-white fs-12 icon-play rotate" id="btn-play" href="javascript:void(0);"></a>
+            </div>
+            <script type="text/javascript">
+                //获取picid函数
+                $(function () {
+                    $("area").click(function () {
+                        var picId = $(this).attr("data-id");
+                        var picSrc = "images/img_big/" + picId + ".jpg"
+                        $(".modal-content>.pic-box>img").attr("src", picSrc);
+                    })
+                    var isPlaying = function (audio) {
+                        return !audio.paused;
+                    }
+                    var a = document.getElementById('main_audio');
+                    if (!(a.play instanceof Function)) {
+                        a = document.getElementById('main_audio_ie8');
+                        isPlaying = function (audio) {
+                            return audio.playState == 2;
+                        }
+                    }
+                    $('#btn-play').on('click', function () {
+                        if ($(this).hasClass('rotate')) {
+                            a.pause();
+                            $(this).removeClass('rotate');
+                        } else {
+                            a.play();
+                            $(this).addClass('rotate');
+                        }
+                    });
+
+                })
+            </script>
+
+        </center>
+    </div>
+</div>
+<script type="text/javascript">
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();
+    together.setHours(8);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+
+    if (!document.createElement('canvas').getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "您的浏览器已经过时!请使用非IE浏览器进行预览";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none")
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+    } else {
+        setTimeout(function () {
+            startHeartAnimation();
+        }, 5000);
+
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        adjustCodePosition();
+        $("#code").typewriter();
+    }
+</script>
+</div>
+
+
+</body>
+</html>
